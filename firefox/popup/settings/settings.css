@@ -1,0 +1,15 @@
+html,
+body {
+  font-family: helvetica;
+  font-weight: 100;
+  font-size: 14px;
+  margin: 0 auto;
+  width: 350px;
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.hidden {
+  display: none;
+}
