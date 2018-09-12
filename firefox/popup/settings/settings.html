@@ -8,9 +8,38 @@
 </head>
 
 <body>
-    <div class="settings">
-        <a href="../home/home.html">Home</a>
+    <div class="home">
+        <a class="home-link" href="../home/home.html">
+            Home
+        </a>
     </div>
+    <div>
+      <input class="player-input" type="text" name="fname">
+          <div class="track-button">
+      Track player
+  </div>
+  </div>
+  
+    <div>
+        <ul class="tracked-players">
+            <div class="tracked-players-text">Tracked Players</div>
+            <li>
+                <div class="player">
+                    d3limit3r
+                    <input type="checkbox" value="untrack" class="untrack-checkbox">
+                </div>
+            </li>
+            <li>
+                <div class="player">
+                    d3limit3d
+                    <input type="checkbox" value="untrack" class="untrack-checkbox">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="untrack-button">
+      Untrack selected players
+  </div>
     <div id="error-content" class="hidden">
         <p>An error has occurred</p>
     </div>
