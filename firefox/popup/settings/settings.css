@@ -21,7 +21,7 @@ li {
   list-style: none;
   background-color: rgba(0, 0, 0, 0.05);
   height: 30px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
   margin-bottom: 5px;
   width: 100%;
@@ -57,15 +57,15 @@ li {
 }
 
 .untrack-button {
-  background-color: #CF3A3A;
+  background-color: #cf3a3a;
   height: 30px;
   box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
   margin-bottom: 5px;
   width: 55%;
   box-sizing: border-box;
   border-radius: 3px;
-  margin-left: auto ;
-  margin-right: auto ;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: -10px;
   text-align: center;
   line-height: 27px;
@@ -76,15 +76,15 @@ li {
 }
 
 .track-button {
-  background-color: #1A8710;
+  background-color: #1a8710;
   height: 30px;
   box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
   margin-bottom: 5px;
   width: 55%;
   box-sizing: border-box;
   border-radius: 3px;
-  margin-left: auto ;
-  margin-right: auto ;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   line-height: 27px;
 }
