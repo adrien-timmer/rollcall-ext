@@ -9,12 +9,18 @@
 
 <body>
     <div class="home">
-        <a class="home-link" href="../home/home.html">
+        <a href="../home/home.html">
             Home
         </a>
     </div>
+
+    <div id="error-container" class="hidden error-container">
+        <p id="error-message-first-line"></p>
+        <p id="error-message-second-line"></p>
+    </div>
+
     <div>
-        <input class="player-input" type="text" name="fname" id="track-player-input">
+        <input class="player-input" type="text" id="track-player-input" placeholder="Player Name">
         <div class="track-button" id="track-player-button">
             Track player
         </div>
@@ -27,9 +33,6 @@
     </div>
     <div class="untrack-button" id="untrack-player-button">
         Untrack selected player(s)
-    </div>
-    <div id="error-content" class="hidden">
-        <p>An error has occurred</p>
     </div>
     <script src="settings.js"></script>
 </body>

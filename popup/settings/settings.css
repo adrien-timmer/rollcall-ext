@@ -1,0 +1,96 @@
+html,
+body {
+    font-family: helvetica;
+    font-size: 15px;
+    margin: 0 auto;
+    max-height: 400px;
+    width: 350px;
+    max-width: 350px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+ul {
+    padding: 5px 5px 0px 5px;
+    height: 100%;
+    width: 100%;
+}
+
+li {
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    height: 30px;
+    border: 1px solid #cccccc;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    width: 340px;
+}
+
+.player {
+    padding: 5px 5px 5px 0px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.home {
+    float: left;
+    padding-bottom: 5px;
+}
+
+.tracked-players-text {
+    text-align: center;
+}
+
+.untrack-checkbox {
+    float: left;
+    margin-right: -20px;
+}
+
+.untrack-button {
+    background-color: #cf3a3a;
+    height: 30px;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    margin-bottom: 5px;
+    width: 55%;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10px;
+    text-align: center;
+    line-height: 27px;
+    cursor: pointer;
+}
+
+.player-input {
+    padding: 5px 5px 0px 5px;
+    min-width: 100%;
+}
+
+.track-button {
+    background-color: #1a8710;
+    height: 30px;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    margin-bottom: 5px;
+    width: 55%;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 27px;
+    cursor: pointer;
+}
+
+.error-container {
+    padding-top: 20px;
+    max-width: 350px;
+    text-align: center;
+    color: #cf3a3a;
+}
