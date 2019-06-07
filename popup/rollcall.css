@@ -1,0 +1,43 @@
+/* Ensure the popup always keeps the same size */
+
+html {
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 400px;
+}
+
+body {
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+html * {
+    outline: 0 !important;
+}
+
+#alerts {
+    position: fixed;
+    min-width: 400;
+    max-width: 400;
+    z-index: 10;
+}
+
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#spinner {
+    padding-top: 120px;
+}
+
+.hidden {
+    display: none;
+}

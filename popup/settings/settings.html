@@ -4,37 +4,52 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="settings.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../rollcall.css" />
+
+    <link rel="stylesheet" href="../bootstrap.min.css" />
     <script type="application/javascript" src="../browser-polyfill.js"></script>
 </head>
 
 <body>
-    <div class="home">
-        <a href="../home/home.html">
-            Home
-        </a>
+    <div class="d-flex flex-column">
+        <div id="alerts" class="d-flex p-2"></div>
     </div>
 
-    <div id="error-container" class="hidden error-container">
-        <p id="error-message-first-line"></p>
-        <p id="error-message-second-line"></p>
-    </div>
+    <ul class="nav nav-tabs justify-content-between">
+        <li class="nav-item">
+            <a class="nav-link" href="../home/home.html">Friends</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../outfits/outfits.html">Outfits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="../settings/settings.html">Settings</a>
+        </li>
+    </ul>
+    </br>
 
-    <div>
-        <input class="player-input" type="text" id="track-player-input" placeholder="Player Name">
-        <div class="track-button" id="track-player-button">
-            Track player
+    <div id="content-container" class="container-fluid w-auto">
+        <div class="card mb-3">
+            <div class="card-header">Players</div>
+            <div class="card-body">
+                <ul class="list-group" id="tracked-player-list">
+
+                </ul>
+                </br>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Player Name" aria-label="Player Name"
+                        aria-describedby="button-addon2" id="track-player-input">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="track-player-button">Track Player</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    </br>
 
-    <div>
-        <ul class="tracked-players" id="tracked-player-list">
-            <div class="tracked-players-text">Tracked Players</div>
-        </ul>
-    </div>
-    <div class="untrack-button" id="untrack-player-button">
-        Untrack selected player(s)
-    </div>
+    <script src="../rollcall.js"></script>
     <script src="settings.js"></script>
 </body>
 

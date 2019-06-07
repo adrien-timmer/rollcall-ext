@@ -1,10 +1,6 @@
 async function trackPlayer() {
-  clearErrorMessage();
-
-  console.log('test');
-
   if (getPlayersFromLocalStorage.length >= 10) {
-    showErrorMessage('Rollcall can currently only support up to 10 players');
+    showErrorMessage('Rollcall currently only supports up to 10 players', true, true);
     return;
   }
 
@@ -24,12 +20,12 @@ async function trackPlayer() {
       await addPlayerToLocalStorage({ name: playerName, id: playerId });
       addPlayerElement({ name: playerName, id: playerId });
     } else if (this.readyState == 4) {
-      console.log('an error was occurred while attempting to retrieve a player id');
+      console.log('an error occurred while attempting to retrieve a player id');
       console.error(this.status);
       if (this.status == 404) {
-        showErrorMessage("Failed to find a player with the specified name")
+        showErrorMessage("Failed to find a player with the specified name", true, true)
       } else {
-        showErrorMessage("An error occurred while attempting to resolve the player name");
+        showErrorMessage("An error occurred while attempting to resolve the player name", true, true);
       }
 
       clearPlayerNameInput();
@@ -71,36 +67,21 @@ async function getPlayersFromLocalStorage() {
 function addPlayerElement(player) {
   let trackedPlayerList = document.getElementById('tracked-player-list');
 
-  //Checkbox
-  let playerCheckbox = document.createElement('input');
-  playerCheckbox.type = 'checkbox';
-  playerCheckbox.value = player.name;
-  playerCheckbox.className = 'untrack-checkbox';
-  playerCheckbox.name = 'untrack-checkbox';
+  let listItem = document.createElement('li');
+  listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+  listItem.textContent = player.name;
 
-  //Player Div
-  let playerElem = document.createElement('div');
-  playerElem.className = 'player';
-  playerElem.textContent = player.name;
-  playerElem.appendChild(playerCheckbox);
+  let buttonSpan = document.createElement('span');
+  buttonSpan.className = 'btn btn-sm btn-danger pull-right';
+  buttonSpan.textContent = 'Remove';
+  buttonSpan.addEventListener('click', () => {
+    removePlayerFromLocalStorage(player.name);
+    listItem.remove();
+  });
 
-  //Player List Item
-  let playerListItem = document.createElement('li');
-  playerListItem.appendChild(playerElem);
+  listItem.appendChild(buttonSpan);
 
-  trackedPlayerList.appendChild(playerListItem);
-}
-
-function getCheckedPlayers() {
-  let checkboxes = document.getElementsByName('untrack-checkbox');
-  let checkedPlayers = [];
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-      checkedPlayers.push(checkboxes[i]);
-    }
-  }
-
-  return checkedPlayers;
+  trackedPlayerList.appendChild(listItem);
 }
 
 async function renderTrackedPlayers() {
@@ -108,58 +89,19 @@ async function renderTrackedPlayers() {
   players.forEach(addPlayerElement);
 }
 
-async function removePlayersFromLocalStorage(playerCheckboxes) {
+async function removePlayerFromLocalStorage(playerName) {
   let players = await getPlayersFromLocalStorage();
-  playerCheckboxes.forEach(playerCheckbox => {
-    let playerIndex = players.findIndex((o) => o.name == playerCheckbox.value);
-    if (playerIndex > -1) {
-      players.splice(playerIndex, 1);
-    }
-  });
+  let playerIndex = players.findIndex((o) => o.name == playerName);
+  if (playerIndex > -1) {
+    players.splice(playerIndex, 1);
+  }
 
   await browser.storage.local.set({ players: JSON.stringify(players) });
 }
 
-function untrackPlayers() {
-  clearErrorMessage();
-
-  let checkedPlayerCheckboxes = getCheckedPlayers();
-  checkedPlayerCheckboxes.forEach(playerCheckbox => {
-    //Find the parent element
-    playerCheckbox.parentNode.parentNode.parentNode.removeChild(
-      playerCheckbox.parentNode.parentNode
-    );
-  });
-
-  //Remove the player from storage
-  removePlayersFromLocalStorage(checkedPlayerCheckboxes);
-}
-
-function showErrorMessage(firstLine, secondLine) {
-  let errorContainer = document.getElementById('error-container');
-  errorContainer.className = "error-container";
-
-  let errorMessageFirstLine = document.getElementById('error-message-first-line');
-  errorMessageFirstLine.textContent = firstLine;
-
-  if (secondLine !== null && secondLine !== "") {
-    let errorMessageSecondLine = document.getElementById('error-message-second-line');
-    errorMessageSecondLine.textContent = secondLine;
-  }
-}
-
-function clearErrorMessage() {
-  let errorContainer = document.getElementById('error-container');
-  errorContainer.className = "hidden";
-
-  let errorMessageFirstLine = document.getElementById('error-message-first-line');
-  errorMessageFirstLine.textContent = '';
-
-  let errorMessageSecondLine = document.getElementById('error-message-second-line');
-  errorMessageSecondLine.textContent = '';
-}
-
 renderTrackedPlayers();
+
+//Event listeners
 
 document
   .getElementById('track-player-button')
@@ -175,7 +117,3 @@ document.getElementById('track-player-input')
       document.getElementById('track-player-button').click();
     }
   });
-
-document
-  .getElementById('untrack-player-button')
-  .addEventListener('click', untrackPlayers); 

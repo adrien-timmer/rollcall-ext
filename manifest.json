@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Rollcall",
-    "version": "1.1",
+    "version": "1.2",
     "description": "A simple tool that checks to see which of your Planetside 2 friends are online",
     "homepage_url": "https://github.com/adrien-timmer/rollcall",
     "icons": {

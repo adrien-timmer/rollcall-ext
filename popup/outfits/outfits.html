@@ -14,10 +14,10 @@
 <body>
     <ul class="nav nav-tabs justify-content-between">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#">Friends</a>
+            <a class="nav-link" data-toggle="tab" href="../home/home.html">Friends</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../outfits/outfits.html">Outfits</a>
+            <a class="nav-link active" data-toggle="tab" href="#">Outfits</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../settings/settings.html">Settings</a>
@@ -35,21 +35,21 @@
                     <div class="spinner-border text-success" role="status"></div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center align-middle">Loading Friends...</div>
+            <div class="d-flex justify-content-center align-middle">Loading Outfits...</div>
         </div>
 
-        <div id="no-players-warning" class="alert alert-secondary hidden">
-            It doesn't look like you've added any players yet. Go to <a href="../settings/settings.html"
-                class="alert-link">Settings</a> to get started.
+        <div id="no-outfit-warning" class="alert alert-secondary hidden">
+            It doesn't look like you've added any players that are in outfits yet. Go to <a
+                href="../settings/settings.html" class="alert-link">Settings</a> to get started.
         </div>
 
-        <ul id="friend-list" class="list-group">
+        <ul id="member-list" class="list-group">
         </ul>
     </div>
     </br>
-    
+
     <script src="../rollcall.js"></script>
-    <script src="home.js"></script>
+    <script src="outfits.js"></script>
 </body>
 
 </html>
