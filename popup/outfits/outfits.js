@@ -1,6 +1,7 @@
 async function loadOutfitMembers() {
 
     let outfitIds = await getOutfitIds();
+    outfitIds = outfitIds.filter(x => x !== null && x !== undefined);
     if (outfitIds.length <= 0) {
         removeSpinner();
         showNoOutfitWarning();
@@ -65,10 +66,12 @@ function getOutfitId(playerId) {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', `https://rollcall-ext.ca/api/Player/${playerId}/outfit`);
         xhr.onload = function () {
-            if (this.status >= 200 && this.status < 300) {
+            if (this.status >= 200 && this.status < 300 || this.status == 404) {
                 resolve(JSON.parse(xhr.response).outfitId);
             } else {
-                showErrorMessage("An error occurred while attempting to resolve a player's outfit", true, true);
+                if (this.status != 404) {
+                    showErrorMessage("An error occurred while attempting to resolve a player's outfit", true, true);
+                }
                 reject({
                     status: this.status,
                     statusText: xhr.statusText
